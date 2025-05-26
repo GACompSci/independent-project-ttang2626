@@ -21,6 +21,7 @@ public class Board{
 
     }
 
+
     public Board(){
         
         board = new Square[8][8];
@@ -30,7 +31,7 @@ public class Board{
     }
 
     public void displayBoard(){
-        String message;
+
         for(Square[] r : board){
             for(Square c: r){
                 System.out.println(c.toString());
@@ -38,7 +39,21 @@ public class Board{
         }
     }
 
-    
+    public boolean stillAlive(){
+        int amountDead = 0;
+        for(Ship testShip : allShips){
+            if(!testShip.getState()){
+                amountDead++;
+            } 
+
+        }
+        if(amountDead == allShips.size()){
+            return false;
+        } else {
+            return true;
+        }
+
+    }
 
     public boolean fireCannon(int x_crd, int y_crd){
         
